@@ -73,16 +73,21 @@ angular.module("website", ["ngSanitize"]).controller("JobsController", ["$scope"
       name: "Abhiyasi Digital Store",
       icon: "images/digital.png",
       date: "Dec 2015 - Mar 2017",
-      skills: ["Java", "Kotlin", "Postgres","Magento"],
+      skills: ["Java", "Kotlin", "Postgres", "Magento"],
       description: "Online Store to Download Heartfulness Material , Audio, Video and many. <a href='https://www.shriramchandramission.org//digitalstore/'>Visit</a>",
       "screenshots": ["Selection_011.png"]
     }, {
       name: "ACS Insurance",
-      company: "Redmill, Paris",
       icon: "images/acs.png",
-      date: "2014",
+      date: "Dec 2015 - May 2016",
       skills: ["C#", "MVC 5", "SQL Server"],
       description: "ACS financial Insurance is the backend for user to register their Insurance detail, Subscribe for Notification, and many."
+    }, {
+      name: "ELS",
+      icon: "images/wso2.png",
+      date: "Dec 2015 - Jan 2016",
+      skills: ["Java", "WSO2"],
+      description: "Written a WSO2 wrapper that convert XML response to JSON and vice versa, from client server Communication from WEB to Wsot through ESB(Enterprise Service Bus)."
     }];
   var b = 250, c = 30, d = -32;
   a.openScreenshot = function (a) {
