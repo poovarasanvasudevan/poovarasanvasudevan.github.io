@@ -62,13 +62,28 @@ angular.module("website", ["ngSanitize"]).controller("JobsController", ["$scope"
     skills: ["Ruby", "Rails", "MongoDB"],
     description: "Billing Software used for Billing heartfulness products, It uses Rails as internal framework, with backend og MongoDB for document storage"
   }, {
-    name: "ACS Insurance",
-    company: "Redmill, Paris",
-    icon: "images/acs.png",
-    date: "2014",
-    skills: ["C#","MVC 5","SQL Server"],
-    description: "ACS financial Insurance is the backend for user to register their Insurance detail, Subscribe for Notification, and many."
-  }];
+    name: "Heartfulness Magazines",
+    icon: "images/magazine.png",
+    date: "Dec 2015 - Mar 2017",
+    skills: ["Java", "Kotlin", "Cassandra"],
+    description: "Heartfulness Magazine for Monthly and Yearly Subscription, Built with Spring Boot, Cassandra as internal data store . <a href='https://heartfulnessmagazine.shpt.in/subscribe'>Visit</a>",
+    "screenshots": ["Selection_010.png"]
+  },
+    {
+      name: "Abhiyasi Digital Store",
+      icon: "images/digital.png",
+      date: "Dec 2015 - Mar 2017",
+      skills: ["Java", "Kotlin", "Postgres","Magento"],
+      description: "Online Store to Download Heartfulness Material , Audio, Video and many. <a href='https://www.shriramchandramission.org//digitalstore/'>Visit</a>",
+      "screenshots": ["Selection_011.png"]
+    }, {
+      name: "ACS Insurance",
+      company: "Redmill, Paris",
+      icon: "images/acs.png",
+      date: "2014",
+      skills: ["C#", "MVC 5", "SQL Server"],
+      description: "ACS financial Insurance is the backend for user to register their Insurance detail, Subscribe for Notification, and many."
+    }];
   var b = 250, c = 30, d = -32;
   a.openScreenshot = function (a) {
     window.open("images/screenshots/" + a)
