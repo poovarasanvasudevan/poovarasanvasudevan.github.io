@@ -8,7 +8,7 @@ angular.module("website", ["ngSanitize"]).controller("JobsController", ["$scope"
     screenshots: ["Selection_006.png"],
     description: "We are currently building a <b>new bank</b> for <b>small and medium businesses</b>, from scratch.<br/><br/>I joined the team very early on and it’s the most exciting project I’ve ever been working on, our goal is very ambitious and all the team is very talented. <br/><br/>We’re all working <b>full-stack</b>, from the product definition to the implementations, backend, web, salesforce and mobile.<br/><br/>You can find more information <a href='https://www.matchrx.com/' target='_blank'>here</a>. <br/><br/>"
   }, {
-    name: "Caretech Self Service Protal Interface (CTSSPI)",
+    name: "Caretech Self Service Portal Interface (CTSSPI)",
     side: !1,
     icon: "images/caretech.png",
     date: "Oct 2017 - Now",
