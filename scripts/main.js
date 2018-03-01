@@ -75,7 +75,7 @@ angular.module("website", ["ngSanitize"]).controller("JobsController", ["$scope"
       date: "Dec 2015 - Mar 2017",
       skills: ["Java", "Kotlin", "Postgres", "Magento"],
       description: "Online Store to Download Heartfulness Material , Audio, Video and many. <a href='https://www.shriramchandramission.org//digitalstore/'>Visit</a>",
-      "screenshots": ["Selection_011.png"]
+      screenshots: ["Selection_011.png"]
     }, {
       name: "ACS Insurance",
       icon: "images/acs.png",
@@ -88,6 +88,13 @@ angular.module("website", ["ngSanitize"]).controller("JobsController", ["$scope"
       date: "Dec 2015 - Jan 2016",
       skills: ["Java", "WSO2"],
       description: "Written a WSO2 wrapper that convert XML response to JSON and vice versa, from client server Communication from WEB to Wsot through ESB(Enterprise Service Bus)."
+    },{
+      name: "Global Archives",
+      icon: "images/gasbig.png",
+      date: "Apr 2015 - Dec 2015",
+      skills: ["PHP", "MySQL","Java Script"],
+      screenshots : ["gassmall.PNG"],
+      description: "Asset Management System for Storing List of Available Books,CD,DVD,Tapes and more."
     }];
   var b = 250, c = 30, d = -32;
   a.openScreenshot = function (a) {
