@@ -4,7 +4,7 @@ angular.module("website", ["ngSanitize"]).controller("JobsController", ["$scope"
         side: !1,
         date: "May 2017 - Now",
         screenshots: ["bots.jpeg"],
-        skills: ["Backend", "Python", "Machine Learnind", "Tensorflow", "Keras"],
+        skills: ["Backend", "Python", "Machine Learning", "Tensorflow", "Keras"],
         description: "Building a Machine Learning Search Based on Tensorflow and Keras with LSTM Sequential Linear Network, That remembers past search results and calulates the waitage, and retrains the model to provide accurate search result <br/> <br/>"
     },{
         name: "Service Focus",
