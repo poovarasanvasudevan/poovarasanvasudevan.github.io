@@ -3,7 +3,7 @@ angular.module("website", ["ngSanitize"]).controller("JobsController", ["$scope"
         name: "Carebot",
         side: !1,
         date: "June 2017 - Now",
-        screenshots: ["bot.png"],
+        screenshots: ["bot.jpeg"],
         skills: ["Backend", "Python", "Machine Learning", "Tensorflow", "Keras"],
         description: "Building a machine Learning bot to ask enduser questions and gives the perfect replies, based on machine learning, We uses Tensorflow Seq2Seq to build an RNN Network with Keras.  You can read here <a href='https://github.com/poovarasanvasudevan/Tensorflow-Chatbot'></a> <br/> <br/>"
     } ,{
