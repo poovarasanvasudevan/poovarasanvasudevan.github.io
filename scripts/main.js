@@ -2,8 +2,15 @@ angular.module("website", ["ngSanitize"]).controller("JobsController", ["$scope"
     a.jobs = [{
         name: "Carebot",
         side: !1,
+        date: "June 2017 - Now",
+        screenshots: ["bot.png"],
+        skills: ["Backend", "Python", "Machine Learning", "Tensorflow", "Keras"],
+        description: "Building a machine Learning bot to ask enduser questions and gives the perfect replies, based on machine learning, We uses Tensorflow Seq2Seq to build an RNN Network with Keras.  You can read here <a href='https://github.com/poovarasanvasudevan/Tensorflow-Chatbot'></a> <br/> <br/>"
+    } ,{
+        name: "Knowledge Base Article Search",
+        side: !1,
         date: "May 2017 - Now",
-        screenshots: ["bots.jpeg"],
+        screenshots: ["search.png"],
         skills: ["Backend", "Python", "Machine Learning", "Tensorflow", "Keras"],
         description: "Building a Machine Learning Search Based on Tensorflow and Keras with LSTM Sequential Linear Network, That remembers past search results and calulates the waitage, and retrains the model to provide accurate search result <br/> <br/>"
     },{
