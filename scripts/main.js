@@ -1,94 +1,111 @@
+var serviceFocusApplicationList = "<ul>" +
+    "<li>Self Service Request Status <a href='https://services.ctsmartdesk.com:8443/ssrs'>View </a></li>" +
+    "<li>Change Request Queue <a href='https://services.ctsmartdesk.com:8443/crq'>View</a></li>" +
+    "</ul>"
+
 angular.module("website", ["ngSanitize"]).controller("JobsController", ["$scope", function (a) {
-    a.jobs = [{
-        name: "Carebot",
-        side: !1,
-        date: "June 2017 - Now",
-        screenshots: ["bots.jpeg"],
-        skills: ["Backend", "Python", "Machine Learning", "Tensorflow", "Keras"],
-        description: "Building a machine Learning bot to ask enduser questions and gives the perfect replies, based on machine learning, We uses Tensorflow Seq2Seq to build an RNN Network with Keras.  You can  <a href='https://github.com/poovarasanvasudevan/Tensorflow-Chatbot'>read here</a> <br/> <br/>"
-    } ,{
-        name: "Knowledge Base Article Search",
-        side: !1,
-        date: "May 2017 - Now",
-        screenshots: ["search.png"],
-        skills: ["Backend", "Python", "Machine Learning", "Tensorflow", "Keras"],
-        description: "Building a Machine Learning Search Based on Tensorflow and Keras with LSTM Sequential Linear Network, That remembers past search results and calulates the waitage, and retrains the model to provide accurate search result <br/> <br/>"
-    },{
-        name: "Service Focus",
-        side: !1,
-        date: "Apr 2017 - Now",
-        skills: ["Backend", "Java", "Springboot", "LDAP", "Remedy"],
-        description: "Service focus is an entry point for all other Application Such as Form builder , CTSSP , Chatbot , OTRS and Other Apllication , That Provide and take cares of Authentication of Other Application, It acts as an Entry point of Other Application Managing Local , Remedy , LDAP and OTRS <br/> <br/>"
-    }, {
-        name: "MatchRX",
-        side: !1,
-        icon: "images/logo.png",
-        date: "Nov 2017 - Mar 2017",
-        skills: ["Backend", "Web", "Lumen", "Laravel"],
-        screenshots: ["Selection_006.png"],
-        description: "We are currently building a <b>new bank</b> for <b>small and medium businesses</b>, from scratch.<br/><br/>I joined the team very early on and it’s the most exciting project I’ve ever been working on, our goal is very ambitious and all the team is very talented. <br/><br/>We’re all working <b>full-stack</b>, from the product definition to the implementations, backend, web, salesforce and mobile.<br/><br/>You can find more information <a href='https://www.matchrx.com/' target='_blank'>here</a>. <br/><br/>"
-    }, {
-        name: "Caretech Self Service Portal Interface (CTSSPI)",
-        side: !1,
-        icon: "images/caretech.png",
-        date: "Oct 2017 - Now",
-        skills: ["Ruby", "Java"],
-        screenshots: ["Selection_007.png"],
-        description: "I worked on two distinct subjects on the Kinetic Task Engine.<ul><li><b>In Workflow We connected Remedy with our Backend Code</b><li>We provided Dynamic Endpoint Creation for Accessing Remedy Forms</li><li>Implemented OAuth 2.0 Specs With Remedy Login Credentials</li><li>Connected LDAP and performing LDAP Queries</li></ul>."
-    }, {
-        name: "Kinetic Task Engine",
-        side: !0,
-        icon: "images/apps/Selection_007.png",
-        date: "Oct 2017 - Now",
-        skills: ["Ruby", "Java"],
-        screenshots: ["Selection_007.png"],
-        description: "Kinetic Task Engine that runs on Ruby as a internal core Combined with JRuby as an abstraction with Java that connects ruby code to remedy to provide CRUD operation on Remedy Forms."
-    }, {
-        name: "Sahaj Vani",
-        icon: "images/sahajvani.webp",
-        date: "Mar 2017 - Oct 2017",
-        screenshots: ["unnamed.webp", "unnamed1.webp", "unnamed2.webp", "unnamed3.webp"],
-        description: '<ul><li>ADS App - This app is a personal library linked to Abhyasi Digital Store(ADS). Users can download all items purchased previously in ADS into their local devices and can download free content available in ADS into their devices. Those purchases are available for download any number of times. User can log in using mysrcm credentials and can link upto five devices with a single mysrcm account. This means, content purchased through a single mysrcm id can be downloaded and played in five different devices.' +
-        '</li><li>' +
-        'The app has three tabs - ' +
-        'Catalog - This is the ADS catalog. It lists all products available for purchase/download from ADS. Currently, the app allows purchase and download of free items directly from the app. Also, if the user has purchased store credits in USD, the app will allow the user to purchase content using the store credit.' +
-        '</li><li>' +
-        'Purchase - This lists all the products purchased by the user. It is available for download to the device.\n' +
-        '</li><li>' +
-        'My Library - This contains all the content downloaded into the device and available for rendering in the device. For better storage management of the device, the app allows the user to delete downloaded content in the local device. The deleted content can be downloaded later, if needed from the purchased tab <a href="https://play.google.com/store/apps/details?id=com.sahajvani.app&hl=en">Download Here</a>.</li></ul>',
-        skills: ["IOS", "Android"]
-    }, {
-        name: "Sahaj Connect",
-        icon: "images/sahajconnect.webp",
-        date: "Mar 2017 - Oct 2017",
-        screenshots: ["sahaj1.webp", "sahaj2.webp", "sahaj3.webp"],
-        description: "<ul><li>Let's Meditate is an innovative app that enables a Seeker to experience meditation with the help of a Meditation Trainer.\n" +
-        "Sahaj Marg meditation focuses on the heart, By tuning in to our heart, we learn to be centered and discover the unlimited resources that lie within.\n" +
-        "</li><li>" +
-        "As a Seeker, you can do a quick one-time registration and get access to a Trainer anytime no matter where you are! All you have to do is login and request for a meditation session. The app immediately connects you with an available Trainer who helps you meditate. You can also provide feedback to the Trainer regarding your session!</li><li>" +
-        "As a Trainer, you can provide meditation sessions to new seekers and existing practitioners as often as you like <a href='https://play.google.com/store/apps/details?id=com.letsmeditate&hl=en'> Download Here</a>.</li></ul>",
-        skills: ["PHP", "Android"]
-    }, {
-        name: "SHPT",
-        icon: "images/shpt.png",
-        date: "Aug 2016 - Oct 2017",
-        skills: ["Design", "Web", "Backend", "PHP"],
-        screenshots: ["Selection_008.png", "Selection_009.png"],
-        description: "SHPT is an Online store for Books CD DVD, and Other Heartfulness Products"
-    }, {
-        name: "Phoenix",
-        icon: "images/guillotine.png",
-        date: "Mar 2016 - Aug 2016",
-        skills: ["Ruby", "Rails", "MongoDB"],
-        description: "Billing Software used for Billing heartfulness products, It uses Rails as internal framework, with backend og MongoDB for document storage"
-    }, {
-        name: "Heartfulness Magazines",
-        icon: "images/magazine.png",
-        date: "Dec 2015 - Mar 2017",
-        skills: ["Java", "Kotlin", "Cassandra"],
-        description: "Heartfulness Magazine for Monthly and Yearly Subscription, Built with Spring Boot, Cassandra as internal data store . <a href='https://heartfulnessmagazine.shpt.in/subscribe'>Visit</a>",
-        "screenshots": ["Selection_010.png"]
-    },
+    a.jobs = [
+        {
+            name: "Service Focus Mobile",
+            side: !1,
+            icon: "images/sf.png",
+            date: "Sept 2018 - Now",
+            screenshots: ["sfm1.PNG", "sfm2.PNG", "sfm3.PNG"],
+            skills: ["Mobile", "Web", "Android", "ios", "Progressive Web"],
+            description: "Creating a Mobile Web App that allows Caretech Clients to interact with Remedy to manages their tickets, Vacation and other stuffs with their mobile devices <a href='https://services.ctsmartdesk.com:8443/sfmobile'>View Here</a>"
+        },
+        {
+            name: "Carebot",
+            side: !1,
+            date: "June 2017 - Now",
+            screenshots: ["bots.jpeg"],
+            skills: ["Backend", "Python", "Machine Learning", "Tensorflow", "Keras"],
+            description: "Building a machine Learning bot to ask enduser questions and gives the perfect replies, based on machine learning, We uses Tensorflow Seq2Seq to build an RNN Network with Keras.  You can  <a href='https://github.com/poovarasanvasudevan/Tensorflow-Chatbot'>read here</a> <br/> <br/>"
+        }, {
+            name: "Knowledge Base Article Search",
+            side: !1,
+            date: "May 2017 - Now",
+            screenshots: ["search.png"],
+            skills: ["Backend", "Python", "Machine Learning", "Tensorflow", "Keras"],
+            description: "Building a Machine Learning Search Based on Tensorflow and Keras with LSTM Sequential Linear Network, That remembers past search results and calulates the waitage, and retrains the model to provide accurate search result <br/> <br/>"
+        }, {
+            name: "Service Focus",
+            side: !1,
+            date: "Apr 2017 - Now",
+            icon: "images/sf.png",
+            screenshots: ["ssrs.PNG", "crq.PNG"],
+            skills: ["Backend", "Java", "Springboot", "LDAP", "Remedy"],
+            description: "Service focus is an entry point for all other Application Such as Form builder , CTSSP , Chatbot , OTRS and Other Apllication , That Provide and take cares of Authentication of Other Application, It acts as an Entry point of Other Application Managing Local , Remedy , LDAP and OTRS <br/> " + serviceFocusApplicationList + "<br/>"
+        }, {
+            name: "MatchRX",
+            side: !1,
+            icon: "images/logo.png",
+            date: "Nov 2017 - Mar 2017",
+            skills: ["Backend", "Web", "Lumen", "Laravel"],
+            screenshots: ["Selection_006.png"],
+            description: "We are currently building a <b>new bank</b> for <b>small and medium businesses</b>, from scratch.<br/><br/>I joined the team very early on and it’s the most exciting project I’ve ever been working on, our goal is very ambitious and all the team is very talented. <br/><br/>We’re all working <b>full-stack</b>, from the product definition to the implementations, backend, web, salesforce and mobile.<br/><br/>You can find more information <a href='https://www.matchrx.com/' target='_blank'>here</a>. <br/><br/>"
+        }, {
+            name: "Caretech Self Service Portal Interface (CTSSPI)",
+            side: !1,
+            icon: "images/caretech.png",
+            date: "Oct 2017 - Now",
+            skills: ["Ruby", "Java"],
+            screenshots: ["Selection_007.png"],
+            description: "I worked on two distinct subjects on the Kinetic Task Engine.<ul><li><b>In Workflow We connected Remedy with our Backend Code</b><li>We provided Dynamic Endpoint Creation for Accessing Remedy Forms</li><li>Implemented OAuth 2.0 Specs With Remedy Login Credentials</li><li>Connected LDAP and performing LDAP Queries</li></ul>."
+        }, {
+            name: "Kinetic Task Engine",
+            side: !0,
+            icon: "images/apps/Selection_007.png",
+            date: "Oct 2017 - Now",
+            skills: ["Ruby", "Java"],
+            screenshots: ["Selection_007.png"],
+            description: "Kinetic Task Engine that runs on Ruby as a internal core Combined with JRuby as an abstraction with Java that connects ruby code to remedy to provide CRUD operation on Remedy Forms."
+        }, {
+            name: "Sahaj Vani",
+            icon: "images/sahajvani.webp",
+            date: "Mar 2017 - Oct 2017",
+            screenshots: ["unnamed.webp", "unnamed1.webp", "unnamed2.webp", "unnamed3.webp"],
+            description: '<ul><li>ADS App - This app is a personal library linked to Abhyasi Digital Store(ADS). Users can download all items purchased previously in ADS into their local devices and can download free content available in ADS into their devices. Those purchases are available for download any number of times. User can log in using mysrcm credentials and can link upto five devices with a single mysrcm account. This means, content purchased through a single mysrcm id can be downloaded and played in five different devices.' +
+                '</li><li>' +
+                'The app has three tabs - ' +
+                'Catalog - This is the ADS catalog. It lists all products available for purchase/download from ADS. Currently, the app allows purchase and download of free items directly from the app. Also, if the user has purchased store credits in USD, the app will allow the user to purchase content using the store credit.' +
+                '</li><li>' +
+                'Purchase - This lists all the products purchased by the user. It is available for download to the device.\n' +
+                '</li><li>' +
+                'My Library - This contains all the content downloaded into the device and available for rendering in the device. For better storage management of the device, the app allows the user to delete downloaded content in the local device. The deleted content can be downloaded later, if needed from the purchased tab <a href="https://play.google.com/store/apps/details?id=com.sahajvani.app&hl=en">Download Here</a>.</li></ul>',
+            skills: ["IOS", "Android"]
+        }, {
+            name: "Sahaj Connect",
+            icon: "images/sahajconnect.webp",
+            date: "Mar 2017 - Oct 2017",
+            screenshots: ["sahaj1.webp", "sahaj2.webp", "sahaj3.webp"],
+            description: "<ul><li>Let's Meditate is an innovative app that enables a Seeker to experience meditation with the help of a Meditation Trainer.\n" +
+                "Sahaj Marg meditation focuses on the heart, By tuning in to our heart, we learn to be centered and discover the unlimited resources that lie within.\n" +
+                "</li><li>" +
+                "As a Seeker, you can do a quick one-time registration and get access to a Trainer anytime no matter where you are! All you have to do is login and request for a meditation session. The app immediately connects you with an available Trainer who helps you meditate. You can also provide feedback to the Trainer regarding your session!</li><li>" +
+                "As a Trainer, you can provide meditation sessions to new seekers and existing practitioners as often as you like <a href='https://play.google.com/store/apps/details?id=com.letsmeditate&hl=en'> Download Here</a>.</li></ul>",
+            skills: ["PHP", "Android"]
+        }, {
+            name: "SHPT",
+            icon: "images/shpt.png",
+            date: "Aug 2016 - Oct 2017",
+            skills: ["Design", "Web", "Backend", "PHP"],
+            screenshots: ["Selection_008.png", "Selection_009.png"],
+            description: "SHPT is an Online store for Books CD DVD, and Other Heartfulness Products"
+        }, {
+            name: "Phoenix",
+            icon: "images/guillotine.png",
+            date: "Mar 2016 - Aug 2016",
+            skills: ["Ruby", "Rails", "MongoDB"],
+            description: "Billing Software used for Billing heartfulness products, It uses Rails as internal framework, with backend og MongoDB for document storage"
+        }, {
+            name: "Heartfulness Magazines",
+            icon: "images/magazine.png",
+            date: "Dec 2015 - Mar 2017",
+            skills: ["Java", "Kotlin", "Cassandra"],
+            description: "Heartfulness Magazine for Monthly and Yearly Subscription, Built with Spring Boot, Cassandra as internal data store . <a href='https://heartfulnessmagazine.shpt.in/subscribe'>Visit</a>",
+            "screenshots": ["Selection_010.png"]
+        },
         {
             name: "Abhiyasi Digital Store",
             icon: "images/digital.png",
