@@ -6,10 +6,46 @@ var serviceFocusApplicationList = "<ul>" +
 angular.module("website", ["ngSanitize"]).controller("JobsController", ["$scope", function (a) {
     a.jobs = [
         {
+            name: "St, Tammany Health Chatbot",
+            side: !1,
+            icon: "images/sths_header.png",
+            date: "Jan 2020 - Now",
+            screenshots: ["stph_chatbot.PNG"],
+            skills: ["Python","Tensorflow","Pytorch"],
+            description: "Developed a ChatBot for Users/Patient for identify their symptoms and provide appropriate suggestions of Doctors, and also helps user to find any Classes or Events that conducted for Users and Registration"
+        },
+        {
+            name: "St, Tammany Health IOS Application",
+            side: !1,
+            icon: "images/sths_header.png",
+            date: "Jan 2020 - Now",
+            screenshots: [],
+            skills: ["Swift","CoreML"],
+            description: "Developed an IOS application to search doctors and nearby hospitals to book appointment, We used CoreML to detect patient/user problem and symptoms identification with on device machine learning to suggest appropriate doctors for the users"
+        },
+        {
+            name: "St, Tammany Health Android Application",
+            side: !1,
+            icon: "images/sths_header.png",
+            date: "Jan 2020 - Now",
+            screenshots: [],
+            skills: ["Kotlin","Android"],
+            description: "Developed an Android application to search doctors and nearby hospitals to book appointment, We used Tensorflow Lite to detect patient/user problem and symptoms identification with on device machine learning to suggest appropriate doctors for the users"
+        },
+        {
+            name: "Caretech Live Help Desk",
+            side: !1,
+            icon: "",
+            date: "Aug 2019 - Now",
+            screenshots: ["helpdesk.PNG"],
+            skills: ["Rust","SIP","Asterisk","WebRTC"],
+            description: "Developed a communication tool that meets client through web, they connect with audio, video, screen sharing and screen control, we uses Rust as backend and some WEBRTC SIP technologies"
+        },
+        {
             name: "Service Focus Mobile",
             side: !1,
             icon: "images/sf.png",
-            date: "Sept 2018 - Now",
+            date: "Sept 2018 - May 2019",
             screenshots: ["sfm1.PNG", "sfm2.PNG", "sfm3.PNG"],
             skills: ["Mobile", "Web", "Android", "ios", "Progressive Web"],
             description: "Creating a Mobile Web App that allows Caretech Clients to interact with Remedy to manages their tickets, Vacation and other stuffs with their mobile devices <a href='https://services.ctsmartdesk.com:8443/sfmobile'>View Here</a>"
@@ -24,7 +60,7 @@ angular.module("website", ["ngSanitize"]).controller("JobsController", ["$scope"
         }, {
             name: "Knowledge Base Article Search",
             side: !1,
-            date: "May 2017 - Now",
+            date: "May 2017 - Aug 2019",
             screenshots: ["search.png"],
             skills: ["Backend", "Python", "Machine Learning", "Tensorflow", "Keras"],
             description: "Building a Machine Learning Search Based on Tensorflow and Keras with LSTM Sequential Linear Network, That remembers past search results and calulates the waitage, and retrains the model to provide accurate search result <br/> <br/>"
