@@ -8628,8 +8628,20 @@ body {
     color: #D7AF4C
 }
 
+.deployment {
+    color: #d439d6
+}
+.infrastructure {
+    color: #2e8295
+}
+.cicd {
+    color: #56af97
+}
 .backend {
     color: #D17759
+}
+.os {
+    color: #0f7fac;
 }
 
 .clickable:hover {
@@ -8641,12 +8653,14 @@ body {
     user-select: none;
     cursor: pointer
 }
+.profile-img {
+    padding: 40px;
+}
 
 .chapter-intro, .chapter, .chapter-footer {
     display: block;
     text-align: center;
     padding-top: 100px;
-    padding-bottom: 100px
 }
 
 .half.chapter-intro, .half.chapter, .half.chapter-footer {
@@ -8820,6 +8834,9 @@ body {
 }
 
 .chapter .skills .right .off {
+    color: #e5eaee
+}
+.chapter .skills .left .off {
     color: #e5eaee
 }
 
