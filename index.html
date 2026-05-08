@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poovarasan Vasudevan — Technical Architect</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#f8f7f4;--surface:#ffffff;--surface2:#f1f0ed;--border:#e4e2dc;
+    --text:#1a1916;--muted:#6b6860;--accent:#5b4fe9;--accent2:#0f6e56;
+    --accent3:#c2410c;--font:'Inter',system-ui,sans-serif;
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;overflow-x:hidden}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);backdrop-filter:blur(20px);background:rgba(248,247,244,0.9)}
+  .nav-logo{font-size:1rem;font-weight:700;color:var(--text);letter-spacing:.02em}
+  .nav-logo span{color:var(--accent)}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.875rem;transition:color .2s}
+  .nav-links a:hover{color:var(--accent)}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:6rem 2rem 4rem;max-width:1100px;margin:0 auto;gap:4rem}
+  .hero-content{flex:1;min-width:0}
+  .hero-image-wrap{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:1.5rem}
+  .hero-avatar{width:220px;height:220px;border-radius:24px;object-fit:cover;border:3px solid var(--border);box-shadow:0 8px 32px rgba(0,0,0,.1)}
+  .hero-socials{display:flex;gap:.75rem}
+  .social-btn{width:36px;height:36px;border-radius:8px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.95rem;transition:border-color .2s,transform .2s;color:var(--muted)}
+  .social-btn:hover{border-color:var(--accent);transform:translateY(-2px);color:var(--accent)}
+
+  .hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--accent2);border:1px solid rgba(15,110,86,.25);background:rgba(15,110,86,.06);padding:.35rem .85rem;border-radius:999px;margin-bottom:1.5rem;letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+  .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent2);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.25rem;color:var(--text)}
+  h1 .name{color:var(--accent)}
+  .hero-desc{font-size:1rem;color:var(--muted);max-width:480px;margin-bottom:2rem;line-height:1.8}
+  .hero-actions{display:flex;gap:.75rem;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.4rem;border-radius:8px;font-size:.875rem;font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer;border:none}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 2px 8px rgba(91,79,233,.25)}
+  .btn-primary:hover{background:#4a3fd4;transform:translateY(-1px);box-shadow:0 4px 16px rgba(91,79,233,.35)}
+  .btn-outline{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+  .btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+  .hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border);flex-wrap:wrap}
+  .stat-num{font-size:1.75rem;font-weight:800;color:var(--text)}
+  .stat-label{font-size:.75rem;color:var(--muted);margin-top:.1rem}
+
+  /* SECTIONS */
+  section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
+  .section-label{font-size:.7rem;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem;font-weight:700}
+  .section-title{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.025em;margin-bottom:.75rem;color:var(--text)}
+  .section-desc{color:var(--muted);max-width:520px;line-height:1.75;margin-bottom:2.5rem;font-size:.95rem}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+  .skill-group{background:var(--surface);padding:1.35rem}
+  .skill-group-label{font-size:.7rem;color:var(--accent2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.85rem}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+  .tag{font-size:.72rem;padding:.28rem .65rem;border-radius:5px;background:var(--surface2);color:var(--muted);border:1px solid var(--border);font-weight:500}
+
+  /* TIMELINE */
+  .timeline{position:relative;padding-left:2rem}
+  .timeline::before{content:'';position:absolute;left:0;top:.5rem;bottom:.5rem;width:1px;background:var(--border)}
+  .timeline-item{position:relative;margin-bottom:2.75rem}
+  .timeline-dot{position:absolute;left:-2.35rem;top:.45rem;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(91,79,233,.15)}
+  .timeline-meta{font-size:.72rem;color:var(--accent);margin-bottom:.3rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+  .timeline-role{font-size:1.05rem;font-weight:700;margin-bottom:.2rem;color:var(--text)}
+  .timeline-company{font-size:.875rem;color:var(--muted);margin-bottom:.65rem}
+  .timeline-bullets{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+  .timeline-bullets li{font-size:.85rem;color:var(--muted);padding-left:1rem;position:relative;line-height:1.65}
+  .timeline-bullets li::before{content:'→';position:absolute;left:0;color:var(--accent2);font-size:.7rem;top:.15rem}
+  .highlight{color:var(--accent2);font-weight:600}
+
+  /* PROJECTS */
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
+  .project-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.35rem;transition:border-color .2s,transform .2s,box-shadow .2s}
+  .project-card:hover{border-color:rgba(91,79,233,.35);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.07)}
+  .project-icon{width:40px;height:40px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:.85rem}
+  .project-name{font-size:.95rem;font-weight:700;margin-bottom:.3rem;color:var(--text)}
+  .project-desc{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.85rem}
+  .project-stack{display:flex;flex-wrap:wrap;gap:.35rem}
+  .stack-tag{font-size:.68rem;padding:.22rem .55rem;border-radius:4px;background:rgba(91,79,233,.08);color:var(--accent);border:1px solid rgba(91,79,233,.18);font-weight:600}
+
+  /* PERSONAL PROJECTS */
+  .personal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+  .personal-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.15rem;display:flex;gap:.9rem;align-items:flex-start;transition:border-color .2s,box-shadow .2s}
+  .personal-card:hover{border-color:rgba(15,110,86,.35);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+  .app-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;border:1px solid var(--border)}
+  .app-name{font-size:.875rem;font-weight:700;margin-bottom:.15rem;color:var(--text)}
+  .app-stat{font-size:.72rem;color:var(--accent2);font-weight:600}
+  .app-desc{font-size:.75rem;color:var(--muted);margin-top:.3rem;line-height:1.55}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+  .contact-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.15rem;display:flex;align-items:center;gap:.75rem;text-decoration:none;transition:border-color .2s,transform .2s,box-shadow .2s}
+  .contact-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.07)}
+  .contact-icon{width:36px;height:36px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+  .contact-label{font-size:.68rem;color:var(--muted);margin-bottom:.12rem;font-weight:500}
+  .contact-value{font-size:.82rem;color:var(--text);font-weight:600}
+
+  /* DIVIDER */
+  .section-divider{max-width:1100px;margin:0 auto;padding:0 2rem}
+  .section-divider hr{border:none;border-top:1px solid var(--border)}
+
+  footer{text-align:center;padding:2.5rem 2rem;color:var(--muted);font-size:.78rem;border-top:1px solid var(--border);margin-top:2rem}
+  footer span{color:var(--accent);font-weight:600}
+
+  @media(max-width:768px){
+    .hero{flex-direction:column-reverse;gap:2rem;text-align:center;padding-top:7rem}
+    .hero-desc{margin:0 auto 2rem}
+    .hero-actions{justify-content:center}
+    .hero-stats{justify-content:center}
+    .hero-image-wrap{width:100%}
+    .hero-avatar{width:160px;height:160px}
+    .nav-links{display:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">PV<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:poosan9@gmail.com" class="btn btn-primary" style="padding:.5rem 1.1rem;font-size:.8rem">Hire me</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="about">
+  <div class="hero-content">
+    <div class="hero-badge">🟢 &nbsp;Available for opportunities</div>
+    <h1>Hi, I'm<br><span class="name">Poovarasan</span><br>Vasudevan</h1>
+    <p class="hero-desc">Technical Architect with 10+ years of experience designing scalable distributed systems, telephony platforms, mobile apps, and developer tools — primarily with Java, Go, Rust, and AWS.</p>
+    <div class="hero-actions">
+      <a href="mailto:poosan9@gmail.com" class="btn btn-primary">Get in touch</a>
+      <a href="https://poovarasanvasudevan.github.io/data/PV3.pdf" class="btn btn-outline" target="_blank">Download CV</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">10+</div><div class="stat-label">Years experience</div></div>
+      <div><div class="stat-num">$5M+</div><div class="stat-label">Cost savings delivered</div></div>
+      <div><div class="stat-num">500k+</div><div class="stat-label">App downloads</div></div>
+      <div><div class="stat-num">30+</div><div class="stat-label">Team size led</div></div>
+    </div>
+  </div>
+  <div class="hero-image-wrap">
+    <img src="https://avatars.githubusercontent.com/u/8036283?v=4" alt="Poovarasan Vasudevan" class="hero-avatar"/>
+    <div class="hero-socials">
+      <a href="https://github.com/poovarasanvasudevan" target="_blank" class="social-btn" title="GitHub">🐙</a>
+      <a href="https://in.linkedin.com/in/poovarasan-vasudevan-a661b190" target="_blank" class="social-btn" title="LinkedIn">💼</a>
+      <a href="https://twitter.com/poovarasanv" target="_blank" class="social-btn" title="Twitter">🐦</a>
+      <a href="mailto:poosan9@gmail.com" class="social-btn" title="Email">✉️</a>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"><hr></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Expertise</div>
+  <h2 class="section-title">Skills & Technologies</h2>
+  <p class="section-desc">A broad stack built over a decade — from embedded Rust to cloud-native Go, from Asterisk telephony to Flutter mobile.</p>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-label">Languages</div>
+      <div class="skill-tags">
+        <span class="tag">Java</span><span class="tag">Go</span><span class="tag">Rust</span><span class="tag">Python</span>
+        <span class="tag">JavaScript</span><span class="tag">Dart</span><span class="tag">Kotlin</span><span class="tag">Ruby</span><span class="tag">Bash</span><span class="tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Frameworks</div>
+      <div class="skill-tags">
+        <span class="tag">Spring Boot</span><span class="tag">Go Iris</span><span class="tag">React</span>
+        <span class="tag">Flutter</span><span class="tag">Electron</span><span class="tag">Node.js</span>
+        <span class="tag">GraphQL</span><span class="tag">Jetpack Compose</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Infrastructure</div>
+      <div class="skill-tags">
+        <span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">Kubernetes</span>
+        <span class="tag">CDK</span><span class="tag">Kafka</span><span class="tag">Redis</span>
+        <span class="tag">Prometheus</span><span class="tag">Grafana</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Databases</div>
+      <div class="skill-tags">
+        <span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">Oracle</span>
+        <span class="tag">SQL Server</span><span class="tag">SQLite</span><span class="tag">MemCache</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Telephony / Real-time</div>
+      <div class="skill-tags">
+        <span class="tag">Asterisk</span><span class="tag">SIP/WebRTC</span><span class="tag">JsSIP</span>
+        <span class="tag">AMI/ARI</span><span class="tag">WebSocket</span><span class="tag">MQTT</span><span class="tag">PubSub</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Tools & OS</div>
+      <div class="skill-tags">
+        <span class="tag">Linux (RHEL/Debian)</span><span class="tag">JetBrains</span><span class="tag">Vim</span>
+        <span class="tag">CI/CD</span><span class="tag">Jenkins</span><span class="tag">GitHub Actions</span><span class="tag">Figma</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career</div>
+  <h2 class="section-title">Professional Experience</h2>
+  <p class="section-desc">10 years at HTC Global Services, growing from Programmer Analyst to Technical Architect leading teams of 30+.</p>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">Aug 2021 — Present</div>
+      <div class="timeline-role">Technical Architect</div>
+      <div class="timeline-company">HTC Global Services · Chennai, IN</div>
+      <ul class="timeline-bullets">
+        <li>Lead a team of <span class="highlight">20+ developers and 10+ testers</span> across multiple product lines</li>
+        <li>Spearheaded a Smart Monitoring Application using Asterisk Telephony for real-time call center dashboards</li>
+        <li>Architected a PUB-SUB workflow system with Kafka for telephony + real-time updates</li>
+        <li>Built SIP/WebRTC phone solution for <span class="highlight">300+ service desk analysts</span></li>
+        <li>Designed an API gateway with centralized cache handling <span class="highlight">10,000 req/s</span> for an ITSM platform</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">Mar 2018 — Aug 2021</div>
+      <div class="timeline-role">Senior Software Engineer</div>
+      <div class="timeline-company">HTC Global Services · Chennai, IN</div>
+      <ul class="timeline-bullets">
+        <li>Rebuilt Quality Control product with 20 stakeholders, saving <span class="highlight">$1M annually</span></li>
+        <li>Led lab workflow tool that increased efficiency by <span class="highlight">40%</span></li>
+        <li>Rebuilt entire ITSM system replacing licensed products, saving <span class="highlight">$4M annually</span></li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">Feb 2016 — Mar 2018</div>
+      <div class="timeline-role">Software Engineer</div>
+      <div class="timeline-company">HTC Global Services · Chennai, IN</div>
+      <ul class="timeline-bullets">
+        <li>Built Real-time Communication System and E-Commerce Platform (web + mobile)</li>
+        <li><span class="highlight">1M+ downloads</span> across Android and iOS</li>
+        <li>Integrated UPI, PayPal, Square — increased online orders by <span class="highlight">30%</span></li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">Feb 2015 — Mar 2016</div>
+      <div class="timeline-role">Programmer Analyst</div>
+      <div class="timeline-company">HTC Global Services · Chennai, IN</div>
+      <ul class="timeline-bullets">
+        <li>Shipped search experience improvements to <span class="highlight">2M+ users</span></li>
+        <li>Built React/HTML/CSS presentation layer and Java backend database services</li>
+        <li>Participated in Scrum ceremonies and analysis/design phases</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Work</div>
+  <h2 class="section-title">Key Projects</h2>
+  <p class="section-desc">Selected professional projects I've architected and led at HTC Global Services.</p>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-icon">📞</div>
+      <div class="project-name">Service Focus Telephony</div>
+      <div class="project-desc">Migrated from Avaya to Asterisk OSS. Custom IVR, dial plans, live call monitoring, agent assignment, real-time dashboard, and voice-to-text with HuggingFace Whisper.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Asterisk AMI/ARI</span><span class="stack-tag">Go Iris</span><span class="stack-tag">React</span>
+        <span class="stack-tag">GraphQL</span><span class="stack-tag">Kubernetes</span><span class="stack-tag">Prometheus</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🖥</div>
+      <div class="project-name">Service Focus DeskPhone</div>
+      <div class="project-desc">Electron + React desktop SIP phone for 300+ service desk agents. WebRTC, screen capture, SSO with Microsoft ADFS, SQLite contact store, MQTT push notifications.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Electron</span><span class="stack-tag">React</span><span class="stack-tag">JsSIP</span>
+        <span class="stack-tag">WebRTC</span><span class="stack-tag">Tailwind</span><span class="stack-tag">MQTT</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">📱</div>
+      <div class="project-name">Service Focus Mobile</div>
+      <div class="project-desc">Multi-tenant Flutter app for incident management, service requests and knowledge base. SSO via SAML2/OAuth2, native code bridges for maps & sensors, FCM push.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Flutter</span><span class="stack-tag">Dart</span><span class="stack-tag">GetX</span>
+        <span class="stack-tag">BLoC</span><span class="stack-tag">FCM</span><span class="stack-tag">APNS</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🦀</div>
+      <div class="project-name">Service Focus Embedder</div>
+      <div class="project-desc">Rust-based lightweight hardware monitor deployed in servers, desktops and containers. Uses MQTT for TCP-unavailable devices, screen & audio capture. Deployed in South American govt orgs.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Rust</span><span class="stack-tag">MQTT</span><span class="stack-tag">Serial Port</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">⚙️</div>
+      <div class="project-name">Service Focus I & II</div>
+      <div class="project-desc">Enterprise ITSM platform. Migrated mainframes to Go + React. GraphQL subscriptions with Dataloader, Redis cache, Apache Spark/Avro data cache, Spring Batch jobs, AWS ECS microservices.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Go</span><span class="stack-tag">Spring Batch</span><span class="stack-tag">GraphQL</span>
+        <span class="stack-tag">Redis</span><span class="stack-tag">Apache Spark</span><span class="stack-tag">AWS EC2</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🏥</div>
+      <div class="project-name">St. Tammany Health Mobile</div>
+      <div class="project-desc">Healthcare app with appointment booking, ER wait times, Find a Doctor and real-time location wayfinding. Swift/Kotlin native bridges via Flutter method channels.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Flutter</span><span class="stack-tag">Dart</span><span class="stack-tag">Swift</span>
+        <span class="stack-tag">Kotlin</span><span class="stack-tag">Firebase</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- PERSONAL PROJECTS -->
+<section>
+  <div class="section-label">Side Projects</div>
+  <h2 class="section-title">Personal Apps</h2>
+  <p class="section-desc">Apps I've built and published independently on the Play Store, with 500k+ total downloads.</p>
+  <div class="personal-grid">
+    <div class="personal-card">
+      <div class="app-icon" style="background:#f0eeff">📺</div>
+      <div>
+        <div class="app-name">Tamil TV</div>
+        <div class="app-stat">450k+ downloads · 13k daily users</div>
+        <div class="app-desc">400+ Tamil channels worldwide. Jetpack Compose + ExoPlayer (Media3). HLS, RTMP, Dash.</div>
+      </div>
+    </div>
+    <div class="personal-card">
+      <div class="app-icon" style="background:#e8f8f3">📻</div>
+      <div>
+        <div class="app-name">Tamil FM Radio</div>
+        <div class="app-stat">50k+ downloads · 4k daily users</div>
+        <div class="app-desc">100+ Tamil radio stations. Jetpack Compose + ExoPlayer, offline SQLite caching.</div>
+      </div>
+    </div>
+    <div class="personal-card">
+      <div class="app-icon" style="background:#fef3e8">🌍</div>
+      <div>
+        <div class="app-name">FM & AM Radio</div>
+        <div class="app-stat">5k+ downloads · 1k daily users</div>
+        <div class="app-desc">50,000+ radio stations globally. Go backend, Jetpack Compose frontend.</div>
+      </div>
+    </div>
+    <div class="personal-card">
+      <div class="app-icon" style="background:#eef3ff">🔐</div>
+      <div>
+        <div class="app-name">JoyOTP</div>
+        <div class="app-stat">5k+ downloads · 1k daily users</div>
+        <div class="app-desc">TOTP & HOTP authenticator. Works fully offline. Compatible with Google Authenticator.</div>
+      </div>
+    </div>
+    <div class="personal-card">
+      <div class="app-icon" style="background:#f5f0ff">📷</div>
+      <div>
+        <div class="app-name">QR Scanner</div>
+        <div class="app-stat">Play Store</div>
+        <div class="app-desc">Ad-free QR scanner & creator. Offline-first. Jetpack Compose + ML Kit Vision.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Let's connect</div>
+  <h2 class="section-title">Get in touch</h2>
+  <p class="section-desc">Open to interesting problems, architecture discussions, and the right opportunities.</p>
+  <div class="contact-grid">
+    <a href="mailto:poosan9@gmail.com" class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div><div class="contact-label">Email</div><div class="contact-value">poosan9@gmail.com</div></div>
+    </a>
+    <a href="https://in.linkedin.com/in/poovarasan-vasudevan-a661b190" target="_blank" class="contact-card">
+      <div class="contact-icon">💼</div>
+      <div><div class="contact-label">LinkedIn</div><div class="contact-value">poovarasan-vasudevan</div></div>
+    </a>
+    <a href="https://github.com/poovarasanvasudevan" target="_blank" class="contact-card">
+      <div class="contact-icon">🐙</div>
+      <div><div class="contact-label">GitHub</div><div class="contact-value">poovarasanvasudevan</div></div>
+    </a>
+    <a href="tel:+919789356631" class="contact-card">
+      <div class="contact-icon">📱</div>
+      <div><div class="contact-label">Phone</div><div class="contact-value">+91 97893 56631</div></div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  Designed & built by <span>Poovarasan Vasudevan</span> · 2025
+</footer>
+
+</body>
+</html>
